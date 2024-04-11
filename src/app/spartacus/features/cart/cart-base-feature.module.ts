@@ -8,6 +8,7 @@ import {
   CartBaseRootModule,
   CART_BASE_FEATURE,
   MINI_CART_FEATURE,
+  CART_BASE_CORE_FEATURE,
 } from '@spartacus/cart/base/root';
 import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
 
@@ -15,14 +16,43 @@ import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
   declarations: [],
   imports: [CartBaseRootModule],
   providers: [
+    // provideConfig(<CmsConfig>{
+    //   featureModules: {
+    //     [CART_BASE_FEATURE]: {
+    //       module: () =>
+    //         import('@spartacus/cart/base').then((m) => m.CartBaseModule),
+    //     },
+    //   },
+    // }),
     provideConfig(<CmsConfig>{
       featureModules: {
         [CART_BASE_FEATURE]: {
           module: () =>
-            import('@spartacus/cart/base').then((m) => m.CartBaseModule),
+            import('@spartacus/cart/base/components').then(
+              (m) => m.CartBaseComponentsModule
+            ),
+        },
+
+        [CART_BASE_CORE_FEATURE]: {
+          module: () =>
+            // import('@spartacus/cart/base/core').then(
+            //   (m) => m.CartBaseCoreModule
+            // ),
+
+            import(
+              '../../../core/cart/base/core/cart-base-core-wrapper.module'
+            ).then((m) => m.CartBaseCoreWrapperModule),
+
+          dependencies: [
+            () =>
+              import('@spartacus/cart/base/occ').then(
+                (m) => m.CartBaseOccModule
+              ),
+          ],
         },
       },
     }),
+
     provideConfig(<CmsConfig>{
       featureModules: {
         [MINI_CART_FEATURE]: {
