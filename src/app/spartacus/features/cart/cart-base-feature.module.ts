@@ -16,39 +16,14 @@ import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
   declarations: [],
   imports: [CartBaseRootModule],
   providers: [
-    // provideConfig(<CmsConfig>{
-    //   featureModules: {
-    //     [CART_BASE_FEATURE]: {
-    //       module: () =>
-    //         import('@spartacus/cart/base').then((m) => m.CartBaseModule),
-    //     },
-    //   },
-    // }),
     provideConfig(<CmsConfig>{
       featureModules: {
         [CART_BASE_FEATURE]: {
           module: () =>
-            import('@spartacus/cart/base/components').then(
-              (m) => m.CartBaseComponentsModule
+            // import('@spartacus/cart/base').then((m) => m.CartBaseModule),
+            import('./cart-base-wrapper.module').then(
+              (m) => m.CartBaseWrapperModule
             ),
-        },
-
-        [CART_BASE_CORE_FEATURE]: {
-          module: () =>
-            // import('@spartacus/cart/base/core').then(
-            //   (m) => m.CartBaseCoreModule
-            // ),
-
-            import(
-              '../../../core/cart/base/core/cart-base-core-wrapper.module'
-            ).then((m) => m.CartBaseCoreWrapperModule),
-
-          dependencies: [
-            () =>
-              import('@spartacus/cart/base/occ').then(
-                (m) => m.CartBaseOccModule
-              ),
-          ],
         },
       },
     }),
