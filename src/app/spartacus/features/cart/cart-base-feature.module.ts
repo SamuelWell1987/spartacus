@@ -32,9 +32,9 @@ import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
       featureModules: {
         [MINI_CART_FEATURE]: {
           module: () =>
-            import('@spartacus/cart/base/components/mini-cart').then(
-              (m) => m.MiniCartModule
-            ),
+            import(
+              './../../../storefront/cart/base/components/mini-cart/bdi-mini-cart.module'
+            ).then((m) => m.BDIMiniCartModule),
         },
       },
     }),

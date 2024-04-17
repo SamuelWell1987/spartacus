@@ -4,6 +4,7 @@ import { CartBaseModule } from '@spartacus/cart/base';
 import { BDIActiveCartService } from '../../../core/cart/base/core/facade/bdi-active-cart.service';
 import { ActiveCartFacade } from '@spartacus/cart/base/root';
 import { ActiveCartService } from '@spartacus/cart/base/core';
+import { BDIActiveCartFacade } from '../../../core/cart/base/root/facade/bdi-active-cart.facade';
 
 @NgModule({
   declarations: [],
@@ -16,6 +17,10 @@ import { ActiveCartService } from '@spartacus/cart/base/core';
     // }
     {
       provide: ActiveCartService,
+      useExisting: BDIActiveCartService,
+    },
+    {
+      provide: BDIActiveCartFacade,
       useExisting: BDIActiveCartService,
     },
   ],

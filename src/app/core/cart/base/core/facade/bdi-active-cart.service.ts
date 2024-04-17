@@ -22,4 +22,13 @@ export class BDIActiveCartService extends ActiveCartService {
       totalUnitCount: 100,
     });
   }
+
+  getDummyCart(): Observable<Cart> {
+    return of({
+      code: 'dummyCode',
+      guid: 'dummyCartId',
+      userId: 'dummyUser',
+      totalUnitCount: 50,
+    });
+  }
 }
