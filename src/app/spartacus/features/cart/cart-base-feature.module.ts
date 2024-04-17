@@ -33,7 +33,7 @@ import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
         [MINI_CART_FEATURE]: {
           module: () =>
             import(
-              './../../../storefront/cart/base/components/mini-cart/bdi-mini-cart.module'
+              '../../../bdi-feature-libs/cart/base/components/mini-cart/bdi-mini-cart.module'
             ).then((m) => m.BDIMiniCartModule),
         },
       },

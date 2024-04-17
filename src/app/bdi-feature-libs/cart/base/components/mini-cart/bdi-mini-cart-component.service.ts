@@ -7,8 +7,9 @@ import {
   SiteContextParamsService,
   StatePersistenceService,
 } from '@spartacus/core';
-import { BDIActiveCartFacade } from '../../../../../core/cart/base/root/facade/bdi-active-cart.facade';
+
 import { Observable, map, of, startWith, switchMap } from 'rxjs';
+import { BDIActiveCartFacade } from '../../root';
 
 @Injectable()
 export class BDIMiniCartComponentService extends MiniCartComponentService {
