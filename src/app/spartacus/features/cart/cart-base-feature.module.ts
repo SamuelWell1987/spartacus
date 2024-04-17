@@ -21,9 +21,9 @@ import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
         [CART_BASE_FEATURE]: {
           module: () =>
             // import('@spartacus/cart/base').then((m) => m.CartBaseModule),
-            import('./cart-base-wrapper.module').then(
-              (m) => m.CartBaseWrapperModule
-            ),
+            import(
+              '../../../bdi-feature-libs/cart/base/cart-base-wrapper.module'
+            ).then((m) => m.CartBaseWrapperModule),
         },
       },
     }),
